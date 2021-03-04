@@ -60,6 +60,7 @@ if(!isset($_GET['id'])){
         </div> -->
         <div class="d-grid gap-2">
             <button type="submit" name='submit' class="btn btn-success">Save Change</button>
+            <a href="viewattendee.php" class="btn btn-default">Back to List</a>
         </div>
     </form>
 
