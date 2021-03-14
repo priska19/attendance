@@ -1,3 +1,8 @@
+<?php 
+//this includes the ssession file, this file contains code that start/resumes a ssession
+//by having it in the header file, it will be included on every page, allowing session capability to be used on every page across the website
+include_once 'includes/session.php' ?>
+
 <!doctype html>
 <html lang="en">
   <head>
@@ -21,7 +26,7 @@
       <span class="navbar-toggler-icon"></span>
     </button>
     <div class="collapse navbar-collapse" id="navbarNav">
-      <ul class="navbar-nav">
+      <ul class="navbar-nav me-auto mb-2 mb-lg-0">
         <li class="nav-item">
           <a class="nav-link" aria-current="page" href="index.php">Home</a>
         </li>
@@ -29,6 +34,15 @@
           <a class="nav-link" href="viewattendee.php">Attendee</a>
         </li>    
       </ul>
+      <div class="navbar-nav mr-auto">          
+        <?php 
+        if(!isset($_SESSION['user_id'])){ ?>
+          <a class="nav-link" href="login.php">Login</a>
+        <?php } else { ?>
+          <span>Hello <?php echo $_SESSION['username']; ?>! </span>
+          <a class="nav-link" href="logout.php">Logout</a>
+        <?php } ?>
+      </div>
     </div>
   </div>
 </nav>
