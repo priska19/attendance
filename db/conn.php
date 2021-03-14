@@ -1,17 +1,17 @@
 <?php
 //development connection
-// $host= 'localhost';
-// $db='attendance_db';
-// $user='root';
-// $pass='';
-// $charset='utf8mb4';
+$host= 'localhost';
+$db='attendance_db';
+$user='root';
+$pass='';
+$charset='utf8mb4';
 
 //remote database connection
-$host= 'remotemysql.com';
-$db='FOvcRYQjWz';
-$user='FOvcRYQjWz';
-$pass='Q3Ys0zn733';
-$charset='utf8mb4';
+// $host= 'remotemysql.com';
+// $db='FOvcRYQjWz';
+// $user='FOvcRYQjWz';
+// $pass='Q3Ys0zn733';
+// $charset='utf8mb4';
 
 $dsn="mysql:host=$host;dbname=$db;charset=$charset";
 
@@ -21,10 +21,13 @@ try{
     $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
     
 } catch(PDOException $error) {
-    //echo "<h2 class='text-danger text-center'>Database not found</h2>";
     throw new PDOException($error->getMessage());
 }
 
 require_once 'crud.php';
+require_once 'user.php';
 $crud = new crud($pdo);
+$user = new user($pdo);
+
+$user->insertUser("admin", "password");
 ?>
